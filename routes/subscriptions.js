@@ -3,10 +3,12 @@ const router = express.Router();
 
 const {
   createSubscription,
-  getSubscriptions
+  getSubscriptions,
+  editSubscription
 } = require('../controllers/subscriptionsController');
 
 router.post('/', createSubscription);
 router.get('/', getSubscriptions);
+router.put('/:id', editSubscription);
 
 module.exports = router;

@@ -12,6 +12,10 @@ const subscriptionSchema = new mongoose.Schema({
   renewDate: {
     type: Date,
     required: true
+  },
+  id: {
+    type: Number,
+    required: true
   }
 });
 
