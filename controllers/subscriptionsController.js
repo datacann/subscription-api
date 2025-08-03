@@ -2,9 +2,8 @@ const Subscription = require('../models/Subscriptions');
 
 exports.createSubscription = async (req, res) => {
   try {
-    const newSub = new Subscription(req.body);
-    const savedSub = await newSub.save();
-    res.status(201).json(savedSub);
+    const savedSubs = await Subscription.insertMany(req.body);
+    res.status(201).json(savedSubs);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
