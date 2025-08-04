@@ -7,7 +7,7 @@ const {
   editSubscription
 } = require('../controllers/subscriptionsController');
 
-router.post('/', createSubscription);
+router.post('/add', createSubscription);
 router.get('/', getSubscriptions);
 router.put('/:id', editSubscription);
 
