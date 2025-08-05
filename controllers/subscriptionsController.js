@@ -41,3 +41,19 @@ exports.editSubscription = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.deleteSubscription = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'Geçersiz ID formatı' });
+    }
+    const deletedSub = await Subscription.findByIdAndDelete(id);
+    if (!deletedSub) {
+      return res.status(404).json({ error: 'Abonelik bulunamadı' });
+    }
+    res.status(200).json({ message: 'Abonelik silindi', deletedSub });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
